@@ -1,0 +1,81 @@
+uMatrix: een contextafhankelijke en matrix-gebaseerde firewall, met vele functies ter verbetering van uw privacy.
+
+*Voor gevorderde gebruikers.*
+
+uMatrix geeft volledige controle over welke verbindingen uw browser mag maken, welk type gegevens de browser mag downloaden, en wat erin mag worden uitgevoerd. Niemand anders beslist het: het is uw keuze. U hebt de volledige controle over uw privacy.
+
+Direct na installatie werkt uMatrix in de modus alles-blokkeren/bij-uitzondering-blokkeren, wat inhoudt dat websites die scripts van derden nodig hebben waarschijnlijk niet goed worden weergegeven. Met twee muisklikken kan uMatrix worden ingesteld om in de modus alles-toestaan/bij-uitzondering-blokkeren te werken, waarmee websites doorgaans wel goed worden weergegeven. Zie https://github.com/gorhill/httpswitchboard/wiki/How-to-use-HTTP-Switchboard:-Two-opposing-views voor meer details over dit onderwerp.
+
+* Bekijk ALLE externe verbindingen, mislukte of gepoogde, afhankelijk van of deze werden geblokkeerd of toegestaan (u beslist).
+
+* Eén muisklik voor het whitelisten/blacklisten van een of meer aanvraagklassen volgens de bestemming en het type gegevens (een geblokkeerde aanvraag zal uw browser NOOIT verlaten).
+
+* Efficiënt blacklisten: cookies verlaten uw browser niet, JavaScript wordt niet uitgevoerd, plug-ins worden niet afgespeeld, trackingpixels worden niet gedownload, etc.
+
+* U hoeft niet slechts op één bepaalde beheerde blacklist (betwistbaar met veel ontbrekende vermeldingen) te vertrouwen waarbuiten niets anders kan worden geblokkeerd: u hebt de volledige controle.
+
+* Gebruikersgemak: met uMatrix kunt u eenvoudig netwerkaanvragen die van een webpagina afkomstig zijn whitelisten/blacklisten, volgens een matrix via aanwijzen en klikken:
+
+- domeinnamen (linkerkolom)
+  * van zeer specifieke
+  * tot zeer algemene
+
+- type aanvragen (bovenste rij)
+  * cookies
+  * CSS-gerelateerde bronnen (stijlbladen en weblettertypen)
+  * afbeeldingen
+  * plug-ins
+  * scripts
+  * XHR (aanvragen door scripts)
+  * frames
+  * overig
+
+Met slechts één klik kunt u een enkele cel, een hele rij, een groep rijen, een hele kolom, of de hele matrix blacklisten/whitelisten.
+
+De filterengine van uMatrix gebruikt voorrangslogica voor het evalueren van wat er volgens de cellen die zijn geblacklist/gewhitelist is geblokkeerd/toegestaan. Hierdoor kunt u bijvoorbeeld met één klik een hele pagina whitelisten, zonder dat u dat herhaaldelijk moet doen bij nieuwe gegevens die op de pagina verschijnen.
+
+Alle regels worden aan een bereik gerelateerd. U kunt bijvoorbeeld ‘facebook.com’ en ‘facebook.net’ overal blokkeren, behalve wanneer u een pagina op ‘www.facebook.com’ bezoekt. Op deze manier zal Facebook geen profiel van uw surfgedrag kunnen opbouwen.
+
+Het doel van deze extensie is om het toestaan of blokkeren van websites, geheel of gedeeltelijk, zo overzichtelijk mogelijk te maken en daarmee gebruikers aan te moedigen om op hun privacy te letten.
+
+Standaard bevat de extensie hosts-bestanden van derden met meer dan 62.000 afzonderlijke hostnamen (lijsten kunnen naar keuze selectief worden in- en uitgeschakeld).
+
+Uiteindelijk kunt u kiezen hoe u op het internet wilt surfen:
+
+* Alles standaard blacklisten, en whitelisten wanneer nodig (standaardmodus).
+
+* Alles standaard whitelisten, en blacklisten wanneer nodig.
+
+In beide gevallen heb u voordeel van de vooraf geleverde blacklists, zodat u op zijn minst basisbescherming krijgt tegen trackers, malwaresites, etc. U kunt al deze vooraf geleverde blacklists ook uitschakelen.
+
+Uw keuze.
+
+Willekeurig samengestelde documentatie: https://github.com/gorhill/uMatrix/wiki
+
+=====
+
+Deze extensie is ook bruikbaar om te begrijpen wat de webpagina in uw browser doet, vaak zonder uw medeweten. U hebt de volledige mogelijkheid om te zien en te beslissen waarmee een webpagina communiceert, en deze communicatie tot bepaalde objectklassen binnen dezelfde pagina te beperken.
+
+Het getal dat in het pictogram van de extensie verschijnt, komt overeen met het totale aantal afzonderlijke geprobeerde aanvragen (geslaagd of niet, afhankelijk van of deze werden toegestaan of geblokkeerd) door de webpagina.
+
+Klik eenvoudig op de juiste vermelding in de matrix om een onderdeel te white-, black- of graylisten. Graylisten houdt in dat de status geblokkeerd of toegestaan van een andere cel met hogere voorrang in de matrix wordt overgenomen.
+
+Rood vierkant = effectief geblacklist, m.a.w. aanvragen richting hun bedoelde eindbestemming worden voorkomen:
+* Donkerrood vierkant: de domeinnaam en/of het type aanvraag is specifiek geblacklist.
+* Vaalrood vierkant: de blacklist-status is overgenomen, omdat de vermelding is gegraylist.
+
+Groen vierkant = effectief gewhitelist, m.a.w. aanvragen mogen hun bedoelde eindbestemming bereiken:
+* Donkergroen vierkant: de domeinnaam en/of het type aanvraag is specifiek gewhitelist.
+* Vaalgroen vierkant: de whitelist-status is overgenomen, omdat de vermelding is gegraylist.
+
+De cel in de linkerbovenhoek van de matrix, de cel ‘alle’, vertegenwoordigt de algemene standaardinstelling waarmee u kunt kiezen of alles toestaan of blokkeren het standaardgedrag is. Sommige gebruikers geven de voorkeur aan alles toestaan en bij uitzondering blokkeren. Mijn persoonlijke voorkeur is natuurlijk het omgekeerde, alles blokkeren en bij uitzondering toestaan.
+
+Deze extensie is ook nuttig als u het browsen wilt versnellen, bijvoorbeeld door alle aanvragen voor afbeeldingen overal te blokkeren.
+
+=====
+
+BUGS, PROBLEMEN: https://github.com/gorhill/uMatrix/issues
+
+BRONCODE: https://github.com/gorhill/uMatrix (GPLv3)
+
+CHANGELOG: https://github.com/gorhill/uMatrix/releases

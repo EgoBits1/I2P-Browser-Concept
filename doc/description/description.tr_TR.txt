@@ -1,0 +1,81 @@
+uMatrix: Matris tabanlı işaret et ve tıkla  güvenlik duvarıdır, birçok gizlilik arttırıcı aracıyla birlikte gelir.
+
+*İleri düzey kullanıcılar için.*
+
+uMatrix tarayıcınızın nereye bağlanabileceği, ne tür veri indirebileceği ve yürütebileceği konusunda tam denetimi size verir. Kimse sizin yerinize karar vermez: Siz seçersiniz. Gizliliğinizin tam denetimi sizdedir.
+
+uMatrix tümünü engelle/istisnalara izin ver modunda çalışır, bunun anlamı 3. taraf betiklere ihtiyaç duyan web sitelerinin muhtemelen "bozuk" olabileceğidir. İki tıklama ile uMatrix genelde siteleri bozmayacak tümüne izin ver/istisnaları engelle moduna ayarlanabilir. Bu konu hakkında daha ayrıntılı bilgi almak için https://github.com/gorhill/httpswitchboard/wiki/How-to-use-HTTP-Switchboard:-Two-opposing-views bağlantısına bakın.
+
+* Engellendiğine veya izin verildiğine (sizin seçiminiz) bağlı olarak başarısız veya denenmiş TÜM uzak bağlantıları görün.
+
+* Bir veya birden fazla istek sınıfını hedefe ve veri türüne göre tek tıklama ile beyaz/kara listeye ekleyin (engellenen istek HİÇBİR ŞEKİLDE tarayıcınızdan ayrılamaz).
+
+* Etkili kara liste: çerezler tarayıcınızdan ayrılamaz, JavaScript'ler yürütülmez, eklentiler oynatılmaz, izleyici pikseller indirilmez, vs.
+
+* Belirli kara listelere bağlı (birçok eksiği bulunan) kalmak zorunda değilsiniz: Tüm denetim sizde.
+
+* Kullanımı kolay: uMatrix işaret et ve tıkla matrisiyle bir web sitesinden kaynaklanan istekleri kolaylıkla beyaz/kara listeye almanızı sağlar:
+
+- alan adları (sol sütun)
+  * özelden
+  * genele
+
+- istek türleri (üst satır)
+  * çerezler
+  * CSS ilişkili kaynaklar (stil şablonları ve web yazı tipleri)
+  * resimler
+  * eklentiler
+  * betikler
+  * XHR (betikler tarafından yapılan istekler)
+  * çerçeveler
+  * diğerleri
+
+Tek hücreyi, tüm satırı, satır gruplarını, tüm sütunu veya tüm matrisi bir tek tıklama ile kara/beyaz listeye alabilirsiniz.
+
+uMatrix'in süzgeç motoru hangi hücrelerin kara/beyaz listede bulunduğuna göre öncelik mantığını kullanarak nelerin engelleneceğine veya nelere izin verileceğine karar verir. Örneğin, bu şekilde sayfada beliren yeni veri türlerine sürekli izin vermenize gerek kalmadan tüm sayfayı beyaz listeye almanıza izin verir.
+
+Tüm kurallar kapsamlıdır. Örneğin, `facebook.com` ve `facebook.net` sitelerini `www.facebook.com`dışındaki sitelerde engelleyebilirsiniz. Bu şekilde Facebook gezinti alışkanlıklarınızla ilgili profil oluşturamayacaktır.
+
+Bu eklentinin en basit olarak amacı  web sitelerine izin vererek veya engelleyerek, tümden veya kısmi olarak, kullanıcıların kendi gizliliklerine dikkat etmelerini teşvik etmektir.
+
+Bu eklenti 3. taraf alan dosyalarıyla toplamda 62.000'nin üzerinde farklı alan adıyla birlikte gelir (listeler seçime bağlı olarak etkinleştirilebilir veya devre dışı bırakılabilir).
+
+Sonuçta, internette nasıl gezmek istediğinizi seçebilirsiniz:
+
+* Varsayılan olarak tümünü kara listele ve gerektiğinde beyaz listeye ekle (varsayılan mod).
+
+* Tümünü beyaz listele ve gerektiğinde kara listeye ekle.
+
+Her halükarda, önceden ayarlanmış kara listelerden faydalanarak izleyiciler, kötü niyetli siteler, vb. tehditlere karşı temel koruma alırsınız. Veya önceden tanımlanmış bu kara listeleri devre dışı bırakabilirsiniz.
+
+Sizin seçiminiz.
+
+Rastgele toplanmış belgeler: https://github.com/gorhill/uMatrix/wiki (çalışma gerektiriyor)
+
+=====
+
+Ayrıca bu eklenti bir web sayfasının bilginiz dışında tarayıcınızda ne yapmaya çalıştığını anlamanıza yardımcı olur. Web sayfasının neyle iletişim kurduğunu görmenizi ve web sayfasında kurulan bu iletişimin belirli öğe sınıflarına kısıtlanması üzerine karar vermenizi sağlar.
+
+Eklenti simgesinde görünen sayı web sitesi tarafından girişimde bulunulmuş farklı istek sayısının toplamıdır (izin verilip verilmediğine göre başarılı veya değil).
+
+Bir bileşeni beyaz, kara veya gri listeye eklemek için matristeki uygun girdiye tıklayın. Gri listenin anlamı bir hücrenin engelleniş veya izin veriliş durumu matristeki yüksek öncellikli başka bir hücreden devralınmasıdır.
+
+Kırmızı dörtgen = etkin biçimde kara listelenmiş, yani isteklerin amaçlanan hedeflerine erişimleri önlenecektir:
+* Koyu kırmızı dörtgen: alan adı ve/veya istek türü özellikle kara listelenmiş.
+* Açık kırmızı dörtgen: kara liste durumu devralınmış çünkü girdi gri listelenmiş.
+
+Yeşil dörtgen = etkin biçimde beyaz listelenmiş, yani isteklerin amaçlanan hedeflerine erişimlerine izin verilecektir:
+* Koyu yeşil dörtgen: alan adı ve/veya istek türü özellikle beyaz listelenmiş.
+* Açık yeşil dörtgen: beyaz liste durumu devralınmış çünkü girdi gri listelenmiş.
+
+Matristeki üst sol hücre, "tümü" hücresi, varsayılan genel ayarları temsil eder. Her şeye izin vermenizde veya her şeyi engellemenizde varsayılan davranışı seçmenize olanak sağlar. Bazıları her şeye izin verirken istisnai olarak engellemeyi tercih eder. Benim kişisel tercihim ise tabiki tersidir, her şeyi engelle ve istisnai olarak izin ver.
+
+Bu eklenti ayrıca gezinti hızınızı da arttırmak istiyorsanız kullanışlıdır. Örneğin, genel olarak resim isteklerini engelleyerek.
+
+=====
+
+HATALAR, SORUNLAR: https://github.com/gorhill/uMatrix/issues
+
+KAYNAK KODU: https://github.com/gorhill/uMatrix (GPLv3)
+
+DEĞİŞİM GÜNLÜĞÜ: https://github.com/gorhill/uMatrix/releases

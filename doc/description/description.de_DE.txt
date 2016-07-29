@@ -1,0 +1,79 @@
+uMatrix: Eine Matrix-basierte Firewall, einfach per Mausklick zu bedienen - und mit vielen Extras, um deine Privatsphäre zu schützen. Für fortgeschrittene Benutzer.
+
+uMatrix gibt dir volle Kontrolle darüber, womit sich dein Browser verbindet, welche Art von Daten erlaubt sind und was ausgeführt werden darf. Du lässt niemand anderen für dich entscheiden: Du entscheidest. Du hast die volle Kontrolle über deine Privatsphäre.
+
+Voreingestellt arbeitet uMatrix in einem gelockerten "blockiere alles/erlaube ausnahmsweise"-Modus, was dazu führt, dass viele Webseiten, die Skripte von Drittseiten benötigen, "kaputt" sein werden. Mit zwei Klicks kannst du aber dafür sorgen, dass uMatrix in einem "erlaube alles/blockiere ausnahmsweise"-Modus arbeitet, der normalerweise Webseiten nicht kaputt macht. Details dazu auf https://github.com/gorhill/httpswitchboard/wiki/How-to-use-HTTP-Switchboard:-Two-opposing-views for more details on this topic.
+
+* Sieh ALLE Verbindungen, ob fehlgeschlagen oder erfolgreich, je nachdem ob du sie blockiert oder erlaubt hast (deine Entscheidung).
+
+* Erlaube/blockiere mit einem Klick eine oder mehrere Arten von Verbindungsanfragen deines Browsers je nach Ziel und Datentyp (eine blockierte Anfrage wird NIE deinen Browser verlassen).
+
+* Effizientes Blacklisting: Cookies werden deinen Browser nicht verlassen, Javascript wird nicht ausgeführt, Plugins werden nicht starten, Tracking-Pixel werden nicht herunter geladen, usw.
+
+* Du musst dich nicht ausschließlich auf irgendeine externe Blacklist (vermutlich mit vielen fehlenden Einträgen) verlassen, die nur unvollständig blockiert: Du selbst hast die volle Kontrolle.
+
+* Bedienungsfreundlich: uMatrix erlaubt es dir auf einfache Art, Netzanfragen einer Webseite in einer klickbaren Matrix zu erlauben (whitelist)/blockieren (blacklist):
+
+- Domain-Namen (linke Spalte)
+    * sehr spezifische
+    * aber auch sehr allgemeine
+
+- Arten von Anfragen (obere Zeile)
+    * Cookies
+    * CSS-spezifische Ressourcen (Stylesheets und Web-Fonts)
+    * Bilder
+    * Plugins
+    * Skripte
+    * XHR (Netzanfragen durch Skripte)
+    * Frames
+    * Andere
+
+Du kannst eine einzelne Zelle erlauben/blockieren, eine ganze Zeile, eine Gruppe von Zeilen, eine ganze Spalte, oder sogar die komplette Matrix mit gerade mal einem Klick.
+
+Das Filtermodul von uMatrix arbeitet nach einer logischen Rangordnung, um zu beurteilen, was blockiert/erlaubt werden soll, je nachdem, welche Zellen blockiert/erlaubt sind. Zum Beispiel erlaubt dir dies, eine komplette Seite zu erlauben, ohne dass du wiederholt neue Daten separat erlauben musst.
+
+Alle Regeln beziehen sich auf einen bestimmten Geltungsbereich. Zum Beispiel kannst du `facebook.com` und `facebook.net` überall blockieren, außer wenn du eine Seite auf `www.facebook.com` besuchst. Dadurch wird Facebook nicht in der Lage sein, eine Profil deiner Surfgewohnheiten anzulegen.
+
+Das Zeil dieser Erweiterung ist es, das Erlauben oder Blockieren von Webseiten - in Gänze oder teilweise - so einfach wie möglich zu machen und dadurch die Benutzer zu ermuntern, auf ihre Privatsphäre zu achten.
+
+Die Erweiterung beinhaltet mehrere externe Hosts-Dateien mit über 58.000 verschiedenen Hostnamen (die Listen können einzeln nach deiner Wahl deaktiviert/aktiviert werden).
+
+Letztlich kannst du selbst entscheiden, wie du mit dieser Erweiterung im Internet surfst:
+
+* Blockiere standardmäßig alles und erlaube nur, was nötig ist (Standardmodus).
+
+* Erlaube standardmäßig alles und blockiere nur, was nötig ist.
+
+Wie immer du entscheidest: Du profitierst auf jeden Fall von den mitgelieferten Hosts-Dateien (Blacklists), die dir einen grundlegenden Schutz vor Trackern, Webseiten mit Schadsoftware, usw. geben. Es sei denn, du deaktivierst alle diese Blacklists.
+
+Deine Entscheidung.
+
+Noch unvollständige Dokumentation: https://github.com/gorhill/uMatrix/wiki
+
+=====
+
+Diese Erweiterung ist auch nützlich, um zu verstehen, was eine Webseite in deinem Browser macht, oft ohne dein Wissen. Du bist voll in der Lage zu sehen und darüber zu entscheiden, mit wem eine Webseite kommuniziert, und diese Kommunikation auf bestimmte Klassen von Objekten zu beschränken.
+
+Die Zahl, die im Symbol der Erweiterung auftaucht, entspricht der Gesamtzahl der einzelnen versuchten Anfragen der Webseite (ob erfolgreich oder nicht, ist abhängig davon, ob du sie erlaubt oder verboten hast).
+
+Klicke einfach auf den entsprechenden Eintrag in der Matrix, um eine Komponente auf die Whitelist, Blacklist oder Greylist zu setzen. Greylist bedeutet, dass der Geblockt- oder Erlaubt-Status geerbt wird von einer anderen Zelle in der Matrix mit einer höheren Rangordnung.
+
+Rotes Quadrat = effektiv blockiert (auf der Blacklist), d.h. Anfragen werden daran gehindert, ihr beabsichtigtes Ziel zu erreichen:
+* Dunkelrotes Quadrat: der Domain-Name und/oder die Art der Anfrage ist ausdrücklich blockiert (auf der Blacklist).
+* Hellrotes Quadrat: der Blacklist-Status ist geerbt, weil der Eintrag auf der Greylist ist.
+
+Grünes Quadrat = effektiv erlaubt (auf der Whitelist), d.h. den Anfragen wird erlaubt, ihr beabsichtigtes Ziel zu erreichen:
+* Dunkelgrünes Quadrat: der Domain-Name und/oder die Art der Anfrage ist ausdrücklich erlaubt (auf der Whitelist).
+* Hellgrünes Quadrat: der Whitelist-Status ist geerbt, weil der Eintrag auf der Greylist ist.
+
+Die Zelle ganz links oben, die "Alle" Zelle repräsentiert die vorgegebene globale Einstellung, die es dir erlaubt zu entscheiden, ob alles zu erlauben oder alles zu blockieren das Standardverhalten sein soll. Einige bevorzugen es, alles zu erlauben und nur ausnahmsweise zu blockieren. Meine persönliche Präferenz ist natürlich das Gegenteil: alles blockieren und ausnahmsweise erlauben.
+
+Diese Erweiterung ist auch nützlich, um das Surfen zu beschleunigen, indem z.B. global alle Anfragen für Bilder blockiert werden können.
+
+=====
+
+FEHLER, PROBLEME: https://github.com/gorhill/uMatrix/issues
+
+QUELLCODE: https://github.com/gorhill/uMatrix (GPLv3)
+
+ÄNDERUNGSPROTOKOLL: https://github.com/gorhill/uMatrix/releases

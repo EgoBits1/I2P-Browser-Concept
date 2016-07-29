@@ -1,0 +1,93 @@
+µMatrix: É um firewall baseado em matrizes, com várias ferramentas para melhorar a privacidade. Para usuários avançados.
+
+µMatrix põe você no total controle de onde seus navegadores são permitidos a conectar, que tipo de dados é permitido baixar, e o que é permitido executar. Ninguém mais decide por você: Você escolhe. Você está com total controle de sua privacidade.
+
+Por padrão, µMatrix funciona de modo relaxante bloqueia-tudo/permite-excepcionalmente, significando que sites da web que requerem scripts de terceiros estão "quebrados". Com dois cliques, µMatrix  pode ser configurado para trabalhar no modo permite-tudo/bloqueia-excepcionalmente, que geralmente não irá "quebrar" sites da web. Veja em https://github.com/gorhill/httpswitchboard/wiki/How-to-use-HTTP-Switchboard:-Dois pontos de vista opostos para maiores detalhes sobre este tópico.
+
+Apesar do mito do quê "Navegadores baseado no Chromium-based não podem realmente bloquear javascript", veja: https://github.com/gorhill/httpswitchboard/wiki/Blocking-javascript-execution-reliably-in-Chromium-based-browsers. Resumo: Sim, javascript pode ser bloqueado com qualidade no Chromium.
+
+* Veja TODAS as conexões remotas, que falharam ou tentadas, dependendo de onde elas foram bloqueadas ou permitidas (Você decide).
+
+* Com simples clique para adicionar a lista branca/negra um ou mais classes de pedidos de acordo com destino e o tipo de dados (um pedido bloqueado NUNCA irá alcançar seu navegador).
+
+* Lista negra eficiente: cookies não irão alcançar seu navegador, javascripts não irão executar, plugins não irão tocar, não irá baixar pixels de rastreamento, etc.
+
+* Você não tem que depender exclusivamente de apenas uma lista negra como solução em particular (sem dúvida com várias entradas perdidas) fora que nada mais pode ser bloqueado: Você está no controle completo.
+
+* Facilidade de uso: μMatrix deixa que você facilmente adicione pedidos à lista negra/branca que se origina da página de web de acordo com indica-e-clica na matrix:
+
+- nomes de domínio (coluna da esquerda)
+  * De muito específico
+  * De muito genérico
+
+- Tipo de pedidos (linha no topo)
+  * cookies
+  * Recursos relacionados com o CSS (folhas de estilo e fontes da web)
+  * imagens
+  * plugins
+  * scripts
+  * XHR (pedidos feitos por scripts)
+  * frames
+  * outros
+
+Você pode adicionar à lista negra/branca uma simples célula, uma linha inteira, um grupo de linhas, uma coluna inteira, ou toda matrix com um só clique.
+
+µMatrix é um motor de filtragem que usa a precedência lógica para avaliar o que é bloqueado/permitido de acordo com as células que estão na lista negra/branca. Por exemplo, isso permite que você adiciona à lista branca uma página inteira com um clique, sem ter que repetidamente adicionando à lista branca, sempre que novos dados aparecem na página.
+
+Todas as regras são escopo. Por exemplo, você pode bloquear ` facebook.net` e `facebook.com` em todos os lugares, exceto quando visita uma página no `www.facebook.com`. Desta forma, o Facebook não vai ser capaz de construir um perfil de seus hábitos de navegação.
+
+O objetivo deste extensão é fazer com que o permitir ou bloqueio de sites de web, totalmente ou parcialmente, seja o mais fácil possível, encorajando usuários a se preocuparem com sua privacidade.
+
+A extensão vem com arquivos de host de terceiros no total de 58.000 nomes de host distintos (listas podem ser desativadas/ativdadas de acordo com a sua escolha).
+
+Por fim, você pode escolher como navegar na rede:
+
+* Todas listas negras por padrão, e lista brancas quando necessário (modo padrão).
+
+* Lista branca por padrão, e lista negra quando necessário.
+
+De qualquer forma, você ainda beneficiar das listas negras predefinidas para que pelo menos você tenha proteção básica contra rastreadores, sites de malware, etc. Ou você pode desabilitar todas listas negras predefinidas.
+
+Sua escolha.
+
+Documentação aleatoriamente montada em: https://github.com/gorhill/uMatrix/wiki
+
+=====
+
+FEEDBACK:
+
+Para qualquer questão/problema que você pode ter, use o botão "Enviar Feedback" na direita superior, em ordem de poder ser hábil a responder prontamente. Eu não posso responder análises diretas, mas eu irei ser mais que feliz em responder suas dúvidas na seção de feedback.
+
+=====
+
+BUGS, PROBLEMAS, SUGESTÕES:
+
+https://github.com/gorhill/uMatrix/issues
+
+Você é  bem-vindo para contribuir com as suas opiniões sobre questões e sugestões abertas, vários argumentos a favor/contra me ajudam a decidir o que é necessário para melhorar a extensão.
+
+Facilidade de uso é objetivo primário. Eu vi usuários desistirem do NoScript para Firefox porque é muito complicado usa-lo, então ao invés de culpar esses usuários pelos pobres hábitos de segurança, eu preferir culpar os desenvolvedores e este projeto é uma tentativa de solucionar esses problemas que causam para alguns usuários desistam da segurança básica.
+
+Esta extensão é também útil para entender o que uma página da web está fazendo com o seu navegador, muitas vezes sem seu conhecimento. Você tem total controle para ver e decidir com quem a página da web se comunica, e restringir essas comunicações para uma classe específica de objetos no interior da página da web.
+
+O número que aparece no ícone da extensão corresponde ao número total de pedidos distintos que tentaram (com sucesso ou não, dependendo de se eles foram permitidos ou bloqueados) pela página da web.
+
+Simples clique para apropriar uma entrada na matrix nas cores branca-,preta- ou cinza de um componente. Cinza significa que o status de permitido ou bloqueado irá ser herdado de uma outra célula de maior precedência na matrix.
+
+Quadrado vermelho = efetivamente na lista negra, exemplo: pedidos são prevenidos de alcançar o destino pretendido:
+* Quadrado vermelho escuro: o nome do domínio e/ou tipo de pedido está especificamente na lista negra.
+* Quadrado vermelho claro: o status de lista negra é herdada porque a entrada é cinza.
+
+Quadrado verde = efetivamente na lista branca, i.e. os pedidos são permitidos de alcançar o destino pretendido:
+* Quadrado verde escuro: o nome do domínio e/ou tipos de pedido são especificamente da lista branca.
+* Quadrado verde claro: o status da lista branca é herdada por causa de uma entrada cinza.
+
+A célula superior esquerda na matrix, a célula "tudo/todos", representa a configuração padrão global, que permite que você escolha entre permitir ou bloquear tudo como comportamento padrão. Alguns preferem permitir tudo e bloquear excepcionalmente. Minha preferência pessoa é claro que é o oposto, bloquear tudo e permitir excepcionalmente.
+
+Esta extensão também é útil se você deseja acelerar sua navegação, bloqueando globalmente todos os pedidos por imagens por exemplo.
+
+=====
+
+CÓDIGO FONTE: https://github.com/gorhill/uMatrix (GPLv3)
+
+CHANGE LOG: https://github.com/gorhill/uMatrix/releases

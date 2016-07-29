@@ -1,0 +1,81 @@
+uMatrix : Un parefeu matriciel configurable à la volée, avec de nombreux outils d'amélioration de la vie privée en ligne. Pour utilisateurs avancés.
+
+*Pour utilisateurs avancés*
+
+uMatrix vous donne les pleins pouvoirs sur votre navigateur. Vous contrôlez où il se connecte, ce qu'il télécharge, et ce qu'il exécute. Personne d'autre ne décidera pour vous. Vous avez toutes les cartes en main pour protéger votre confidentialité.
+
+Après installation, uMatrix fonctionne en mode "Blocage total/Permissions exceptionnelles", ce qui veut dire que les sites Web ayant besoin de contenus tiers sont susceptibles de ne pas fonctionner correctement. En deux clics, uMatrix peut fonctionner en mode "Autorisation totale/Blocage exceptionnel", ce qui en principe n'empêchera pas les sites Web de fonctionner. Pour plus d'informations sur ce sujet, consultez cette page en Anglais : https://github.com/gorhill/httpswitchboard/wiki/How-to-use-HTTP-Switchboard:-Two-opposing-views .
+
+* Consultez TOUTES les tentatives de connexions distantes, échouées ou réussies, selon qu'elles soient bloquées ou autorisées (c'est vous qui décidez).
+
+* En un clic, vous pouvez mettre en liste blanche/noire une ou plusieurs sorte(s) de requête(s) d'après la destination et le type des données (sachant qu'une requête bloquée ne "partira" JAMAIS de votre navigateur).
+
+* Blocage efficace : Les cookies ne partiront pas de votre navigateur, le code JavaScript ne sera pas exécuté, les plugins ne démarreront pas, les pixels de pistage ne seront pas téléchargés, etc.
+
+* Vous n'avez pas à vous reposer sur une unique liste prédéfinie de blocage (dans laquelle il manquerait beaucoup d'éléments), avec la possibilité de cumuler l'emploi de plusieurs listes de ce genre, vous avez entièrement le contrôle.
+
+* Facilité d'utilisation : uMatrix vous laisse aisément mettre en liste blanche/noire des requêtes réseau provenant d'une page Web, d'après une matrice qui vous permet de manipuler en quelques clics de souris :
+
+- Les noms de domaine (colonne de gauche)
+  * de très spécifique
+  * à très générique
+
+- Les types de requête (première ligne)
+  * Cookie
+  * Ressources relatifs aux feuilles de style en cascade (communément abrégées CSS) et polices Web
+  * Image (Img)
+  * Plugin
+  * Script
+  * XHR (requête effectuée par un/des script(s))
+  * Frame
+  * Autre
+
+En un clic, vous pouvez mettre en liste noire/blanche une simple cellule, une ligne entière, un ensemble de lignes, une colonne entière, ou toute la matrice.
+
+Le moteur de filtrage de uMatrix utilise une logique de priorité pour évaluer ce qui doit être bloqué/autorisé d'après l'état des cellules (liste noire/blanche). Par exemple, cela vous permet de mettre en liste blanche toute une page Web en un clic, sans avoir à mettre en liste blanche de manière répétitive toute nouvelle donnée apparaissant sur la page.
+
+Toutes les règles sont contextualisées. Par exemple, vous pouvez bloquer "facebook.com" et "facebook.net" partout sauf lorsque vous visitez une page sur "www.facebook.com". Ainsi Facebook ne pourrait pas définir un profil de vous en se basant sur vos habitudes de navigation.
+
+Le but de cette extension est de rendre l'autorisation/le refus de sites Web, en totalité ou partiellement, aussi direct(e) que possible, pour encourager les utilisateurs à se préoccuper de leur confidentialité.
+
+L'extension fournit des listes prédéfinies de blocage totalisant plus de 62 000 noms de domaine différents, sachant que chacune de ces listes peut être désactivée/activé selon votre choix.
+
+Enfin, vous pouvez choisir comment surfer sur le Net :
+
+* Tout mettre en liste noire, et accorder des permissions exceptionnelles si besoin est (il s'agit du mode par défaut).
+
+* Tout mettre en liste blanche, et bloquer si nécessaire.
+
+De toute manière, vous bénéficierez toujours des listes de règles prédéfinis pour avoir une protection décente contre les pisteurs, les sites Web malveillants, etc. Ou vous pouvez désactiver tout cela.
+
+Encore une fois, c'est votre choix.
+
+Retrouvez ici en langue anglaise de la documentation rassemblée aléatoirement sur l'extension : https://github.com/gorhill/uMatrix/wiki (page en construction).
+
+=====
+
+Cette extension est également utile pour comprendre ce qu'effectue en coulisses une page Web dans votre navigateur. Vous pouvez parfaitement voir et décider avec quoi une page Web communique, et restreindre ces différentes communications.
+
+Le nombre qui apparait sur l'icône de l'extension correspond au nombre total de requêtes distinctes tentées (et réussies ou non selon qu'elles ont été autorisées/refusées) par la page Web.
+
+Cliquez simplement à l'endroit approprié dans la matrice pour mettre en liste blanche/noire/grise un élément. La liste grise signifie que leur statut d'autorisation/de refus hérite depuis une entrée parente dans la matrice.
+
+Rectangle rouge = Mise en liste noire, c'est-à-dire que le moteur de filtrage empêche les requêtes d'atteindre la destination qu'elles convoitaient :
+* Rectangle rouge vif : Le nom de domaine et/ou le type de requête est tout particulièrement mis en liste noire.
+* Rectangle rouge pâle : Le statut de liste blanche est tributaire de l'élément parent (placé sur liste grise).
+
+Rectangle vert = Mise en liste blanche, c'est-à-dire que les requêtes sont autorisées à atteindre la destination qu'elles convoitaient :
+* Rectangle vert vif : Le nom de domaine et/ou le type de requête est tout particulièrement mis en liste blanche.
+* Rectangle vert pâle : Le statut de liste blanche est tributaire de l'élément parent (placé sur liste grise).
+
+La cellule en haut à gauche de la matrice ("Tout") représente le paramètre global par défaut, qui vous permet de choisir ce qui est autorisé ou bloqué entièrement dans le comportement par défaut. D'aucuns préfèrent tout autoriser et bloquer exceptionnellement. Personnellement je préfère l'inverse, tout bloquer et autoriser exceptionnellement.
+
+Cette extension est aussi utile si vous souhaitez accélérer votre navigation, en bloquant toutes les requêtes d'images par exemple.
+
+=====
+
+PROBLÈMES (Page en Anglais) : https://github.com/gorhill/uMatrix/issues
+
+CODE SOURCE (Licence GPLv3, page en Anglais) : https://github.com/gorhill/uMatrix .
+
+JOURNAL DES CHANGEMENTS (Page en Anglais) : https://github.com/gorhill/umatrix/releases .

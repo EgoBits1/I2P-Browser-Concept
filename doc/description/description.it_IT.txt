@@ -1,0 +1,93 @@
+uMatrix: un firewall a matrice del tipo punta e clicca, con molte funzionalità a salvaguardia della privacy. Per utenti avanzati.
+
+uMatrix permette il pieno controllo delle connessioni del browser, del tipo di dati che può scaricare e di cosa può eseguire. Nessun'altro decide per te: Tu scegli. Solo tu hai il controllo completo della tua privacy.
+
+In configurazione standard, uMatrix funziona in modalità blocca-tutto/permetti-eccezionalmente, vale a dire che i siti che richiedono script di terze parti, facilmente risulteranno incompleti o con errori. Con solo un paio di click, uMatrix può essere configurato in modalità permetti-tutto/blocca-eccezionalmente, che generalmente non causa problemi nel caricamento dei siti. Vedere https://github.com/gorhill/httpswitchboard/wiki/How-to-use-HTTP-Switchboard:-Two-opposing-views per ulteriori dettagli.
+
+Riguardo il mito che i browser basati su Chromium non possano bloccare efficacemente javascript, vedere: https://github.com/gorhill/httpswitchboard/wiki/Blocking-javascript-execution-reliably-in-Chromium-based-browsers. In sostanza: Si, javascript può essere efficacemente bloccato in Chromium.
+
+*Vedi TUTTE le connessioni remote, se fallite o tentate, dipendendo se siano bloccate o permesse (tu decidi).
+
+* Un singolo click per permettere/bloccare una o più categorie di richieste, in funzione della destinazione e del tipo di dati (una richiesta bloccata non lascerà MAI il tuo browser).
+
+* Controllo efficiente: i cookies non lasceranno il tuo browser, javascript non verrà eseguito, i plug-in non verranno attivati, pixel di tracking non saranno scaricati, ecc.
+
+* Tu non devi unicamente affidarti ad una singola lista nera (presumibilmente con molte voci mancanti) al di fuori della quale niente altro può essere bloccato: Tu hai il pieno controllo.
+
+* Semplicità d'uso: uMatrix consente di permettere/bloccare le richieste originate da una pagina web secondo uno schema a matrice, punta e clicca:
+
+- nome del dominio (colonna di sinistra)
+  * dal molto specifico
+  * al molto generico
+
+- tipo di richiesta (riga in alto)
+  * cookies
+  * risorse tipo CSS (stili e caratteri)
+  * immagini
+  * plugins
+  * scripts
+  * XHR (richieste fatte dagli script)
+  * riquadri
+  * altro
+
+Tu puoi permettere/bloccare una singola cella, una intera riga, un gruppo di righe, una intera colonna o l'intera matrice, con solo un click.
+
+Il sistema di filtri di uMatrix utilizza una logica di priorità per valutare cosa viene bloccato/permesso, secondo le celle che sono in black o white list. Per esempio, questo permette di mettere in white list una pagina intera con un click, senza alcun bisogno di consentire qualunque nuovo elemento che appare sulla pagina.
+
+Tutte le regole hanno un loro specifico campo di applicazione. Per esempio, si può bloccare 'facebook.com' e 'facebook.net' ovunque eccetto quando si visita una pagina su 'www.facebook.com'. in questo modo Facebook non è in grado di costruire un profilo delle abitudini di navigazione.
+
+Lo scopo di questa estensione è rendere il più immediato possibile il blocco o meno, parziale o totale di siti web, incoraggiando gli utenti a tutelare la propria privacy.
+
+L'estensione contiene host file di terze parti, per un totale di oltre 58.000 distinti hostname (le liste possono essere disabilitate/abilitate secondo le proprie preferenze).
+
+In conclusione, ognuno può decidere come navigare su Internet:
+
+*Mettere tutto in blacklist e consentire elementi secondo necessità (modalità di default).
+
+*Consentire tutto di default e bloccare elementi secondo necessità.
+
+In entrambe le modalità, rimane il beneficio della protezione delle blacklist standard, che forniscono una difesa di base nei confronti di tracker, siti di malware, ecc. Oppure si possono disabilitare tutte queste blacklist standard.
+
+La scelta è tua.
+
+Documentazione disponibile: https://github.com/gorhill/uMatrix/wiki
+
+=====
+
+Feedback:
+
+Per qualunque dubbio o domanda, usare il pulsante sulla destra "Invia Feedback". Risponderò prontamente. Non posso rispondere direttamente ai pareri, ma sarò lieto di rispondere direttamente nella sezione dei feedback.
+
+=====
+
+Bachi, problemi, consigli:
+
+https://github.com/gorhill/uMatrix/issues
+
+Chiunque può contribuire al lavoro, con suggerimenti, segnalazione di problemi, argomentazioni pro/contro, per aiutarmi a decidere quali migliorie fare nell'estensione.
+
+La facilità di utilizzo è il primo obiettivo. Ho visto utilizzatori rinunciare ad usare NoScript per Firefox perché complesso, quindi invece di accusare questi utilizzatori di avere abitudini non sicure, preferisco accusare gli sviluppatori e questo progetto vuole essere un tentativo di risolvere quei problemi che hanno determinato la rinuncia ad impiegare una sicurezza di base.
+
+Questa estensione è anche utile per capire cosa una pagina web fa effettivamente nel browser, spesso senza la vostra conoscenza.  Voi avete la piena abilità di vedere e decidere con chi la pagina web comunica e restringere queste comunicazioni a specifiche classi di oggetti all'interno della pagina.
+
+Il numero che appare nella nell'icona dell'estensione corrisponde al numero complessivo di distinte richieste tentate (con successo o meno, dipendendo se queste siano permesse o bloccate) dalla pagina web.
+
+Semplicente fare click nella appropriata cella della matrice per permettere mettere un elemento in white-, black- o grey list.  La lista grigia (Graylisting) significa che lo stato di bloccato o permesso viene ereditato da un'altra cella con più alta priorità nella matrice.
+
+Cella rossa = effettivamente bloccata, cioè alle richieste viene impedito di raggiungere la loro destinazione.
+* Cella rosso scuro: il dominio o il tipo di richiesta è specificamente bloccata.
+* Cella rossa opaca: lo stato di blocco (blacklist) è ereditato perchè l'elemento è in grey list.
+
+Cella verde = effettivamente permesso, cioè alle richieste è permesso raggiungere la loro destinazione:
+* Cella verde scuro: il dominio e/o il tipo di richiesta è specificamente permessa (whitelist).
+* Cella vedre opaca: lo stato di permesso è ereditato perchè l'elemento è in grey list.
+
+La cella in alto a sinistra nella matrice, la cella "tutto", rappresenta il setting globale di default, che permette di scegliere se permettere o bloccare tutto. Alcuni preferiscono permettere tutto e bloccare in casi specifici. La mia preferenza personale è naturalmente il contrario, bloccare tutto e permettere in casi specifici.
+
+Questa estensione è inoltre utile se volete accelerare la vostra navigazione, bloccando tutte le richieste delle immagini, per esempio.
+
+=====
+
+CODICE SORGENTE: https://github.com/gorhill/uMatrix (GPLv3)
+
+CHANGE LOG: https://github.com/gorhill/uMatrix/releases
